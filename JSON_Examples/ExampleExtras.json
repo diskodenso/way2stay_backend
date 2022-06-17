@@ -1,0 +1,7 @@
+{
+    "_id": 5,
+    "name": "Balcony",
+    "description": "This extra describes that your flat has a balcony",
+    "createdAt": "2022-06-17",
+    "modifiedAt": "2022-06-17"
+}

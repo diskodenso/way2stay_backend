@@ -1,0 +1,24 @@
+{
+    "_id": 1,
+    "username": "poweruser",
+    "password": "StrengGeheimesPasswort",
+    "contact": {
+        "email": "example@test.com",
+        "phone": "+49 22222 222222",
+        "mobile": "+49 172 123333"
+    },
+    "firstName": "Hans",
+    "lastName": "Guckindieluft",
+    "address": {
+        "street": "Beispielstraße",
+        "houseNumber": "2",
+        "postalCode": "54698",
+        "city": "ExampleCity"
+    },
+    "profilePicUrl": "/upload/profiles/pictures/myPic.jpg",
+    "isActive": true,
+    "deactivatedAt": "2022-06-20",
+    "isAdmin": false,
+    "createdAt": "2022-06-17",
+    "modifiedAt": "2022-06-17"
+}

@@ -1,0 +1,17 @@
+{
+    "_id": 1,
+    "firstItem": {
+        "flatId": 1,
+        "approved": true,
+        "comment": "Ich freue mich schon auf den Urlaub"
+    },
+    "secondItem": {
+        "flatId": 2,
+        "approved": true,
+        "comment": "Yippie"
+    },
+    "arrival": "2022-12-03",
+    "departure": "2022-12-13",
+    "createdAt": "2022-06-17",
+    "modifiedAt": "2022-06-17"
+}

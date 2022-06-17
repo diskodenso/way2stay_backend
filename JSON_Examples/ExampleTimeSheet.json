@@ -1,0 +1,9 @@
+{
+    "_id": 1,
+    "flatId": 2,
+    "begin": "2022-12-01",
+    "end": "2022-12-13",
+    "comment": "My flat is bookable for the whole time, only",
+    "createdAt": "2022-06-17",
+    "modifiedAt": "2022-06-17"
+}

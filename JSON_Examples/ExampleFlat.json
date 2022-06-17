@@ -4,19 +4,32 @@
     "title": "My awesome flat",
     "description": "My awesome flat is located in a beautyful place!",
     "details": {
-        "floor": 2,
         "bedroom": 2,
+        "maxPeople": 4,
         "bathroom": 1,
         "totalRooms": 4,
-        "size": 70
+        "size": 70,
+        "floor": 2,
+        "elevator": false,
+        "extras": [
+            1,
+            5,
+            8,
+            159
+        ]
     },
-    "categoryIds": [1, 3],
+    "pets": false,
+    "kids": true,
+    "categoryIds": [
+        1,
+        3
+    ],
     "location": {
         "address": {
             "street": "Beispielstraße",
             "houseNumber": "2",
             "postalCode": 54682,
-            "city": "ExampleCity"   
+            "city": "ExampleCity"
         },
         "coordinates": {
             "lat": 47.35856,

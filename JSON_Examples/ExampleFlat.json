@@ -1,0 +1,41 @@
+{
+    "_id": 1,
+    "userId": 1,
+    "title": "My awesome flat",
+    "description": "My awesome flat is located in a beautyful place!",
+    "details": {
+        "floor": 2,
+        "bedroom": 2,
+        "bathroom": 1,
+        "totalRooms": 4,
+        "size": 70
+    },
+    "categoryIds": [1, 3],
+    "location": {
+        "address": {
+            "street": "Beispielstraße",
+            "houseNumber": "2",
+            "postalCode": 54682,
+            "city": "ExampleCity"   
+        },
+        "coordinates": {
+            "lat": 47.35856,
+            "long": 10.5987
+        }
+    },
+    "images": [
+        {
+            "imgTitle": "First Image",
+            "imgDescription": "Living room",
+            "imgUrl": "/upload/pictures"
+        },
+        {
+            "imgTitle": "Second Image",
+            "imgDescription": "bathroom",
+            "imgUrl": "/upload/pictures"
+        }
+    ],
+    "isActive": true,
+    "createdAt": "2022-06-17",
+    "modifiedAt": "2022-06-17"
+}

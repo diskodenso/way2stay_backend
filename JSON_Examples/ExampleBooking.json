@@ -1,0 +1,13 @@
+{
+    "_id": 1,
+    "flatId_1": 1,
+    "approved_1": true,
+    "comment_1": "Ich freue mich schon auf den Urlaub",
+    "flatId_2": 2,
+    "approved_2": true,
+    "comment_2": "Yippie",
+    "begin": "2022-12-03",
+    "end": "2022-12-13",
+    "createdAt": "2022-06-17",
+    "modifiedAt": "2022-06-17"
+}

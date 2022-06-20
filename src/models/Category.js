@@ -4,7 +4,14 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const categorySchema = new Schema({
-  name: String,
+    categories: [{
+        city: false,
+        lake: false,
+        suburbs: false,
+        rural: false,
+        moutains: false,
+        skiing: false,
+    }],
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },
 });

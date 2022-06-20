@@ -1,6 +1,6 @@
 {
     "_id": 1,
-    "username": "poweruser",
+    "userName": "poweruser",
     "password": "StrengGeheimesPasswort",
     "contact": {
         "email": "example@test.com",

@@ -22,7 +22,7 @@ const userSchema = new Schema({
     {
       street: { type: String, required: false },
       housenumber: { type: Number, required: false },
-      postalCode: { type: Number, required: false },
+      postalcode: { type: Number, required: false },
       city: { type: String, required: false },
     },
     ],

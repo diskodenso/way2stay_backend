@@ -1,4 +1,6 @@
 import { Router } from "express";
 
-export const flatsRouter = Router();
+const flatsRouter = Router();
+
+export default flatsRouter;
 

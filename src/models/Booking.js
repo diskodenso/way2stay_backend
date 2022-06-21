@@ -7,13 +7,13 @@ const bookingSchema = new Schema({
   items: [
     {
       flat: {
-        type: ObjectId,
+        type: String,
         ref: "Flat",
         required: [true, "Flat is required"],
       },
       approved: Boolean,
       comments: {
-        type: ObjectId,
+        type: String,
         ref: "Review",
         required: [false, "Review is not required"],
       },

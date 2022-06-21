@@ -4,7 +4,7 @@ import {
   deleteBooking,
   getAllBookingsByUserId,
   getAllBookingsByFlatId,
-  getSingleBooking,
+  getSingleBookingById,
   updateBooking,
 } from "../controllers/bookingControllers.js";
 
@@ -16,6 +16,6 @@ bookingsRouter.route("/user/:userId").get(getAllBookingsByUserId);
 
 bookingsRouter.route("/flat/:flatId").get(getAllBookingsByFlatId);
 
-bookingsRouter.route("/:bookingId").get(getSingleBooking).put(updateBooking).delete(deleteBooking);
+bookingsRouter.route("/:bookingId").get(getSingleBookingById).put(updateBooking).delete(deleteBooking);
 
 export default bookingsRouter;

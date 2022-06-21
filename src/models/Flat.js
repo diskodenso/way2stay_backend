@@ -5,7 +5,6 @@ const { Schema, model, ObjectId } = mongoose;
 
 const flatSchema = new Schema({
   user: { type: ObjectId, ref: "User", required: [true, "User is required"] },
-  // userId: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   details: [

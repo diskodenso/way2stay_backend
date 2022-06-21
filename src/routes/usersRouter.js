@@ -6,8 +6,11 @@ import {
   deleteUser,
   getAllUsers,
   getSingleUser,
+  logIn,
   updateUser,
+  verifySession
 } from "../controllers/usersController.js";
+import {verifyToken} from '../middlewares/verifyToken.js';
 
 // declare userRouter
 const usersRouter = Router();

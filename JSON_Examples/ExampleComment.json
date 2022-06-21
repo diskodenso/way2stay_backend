@@ -2,6 +2,7 @@
     "_id": 1,
     "userId": 1,
     "bookingId": 2,
+    "flatId": 2,
     "stars": 4,
     "comment": "Was für eine geile Wohnung",
     "createdAt": "2022-06-17",

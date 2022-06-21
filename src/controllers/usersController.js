@@ -23,8 +23,8 @@ export const getSingleUser = async (req, res) => {
 // --- CREATE NEW USER CONTROLLER --- //
 export const createNewUser = async (req, res) => {
   try {
-    const { email, username, password } = req.body;
-    const newUser = await User.create({ firstname, lastname, password });
+    const { isActive, email, username, password } = req.body;
+    const newUser = await User.create({ isActive, email, username, password });
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json(error);

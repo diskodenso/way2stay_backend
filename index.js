@@ -8,6 +8,7 @@ import commentsRouter from './src/routes/commentsRouter.js'
 import bookingRouter from './src/routes/bookingsRouter.js'
 import flatsRouter from './src/routes/flatsRouter.js'
 import timeSheetsRouter from './src/routes/timeSheetsRouter.js'
+import categoriesRouter from './src/routes/categoriesRouter.js';
 
 
 const app = express();
@@ -29,7 +30,7 @@ app.use('/api/comments', commentsRouter);
 app.use('/api/bookings', bookingRouter);
 app.use('/api/flats', flatsRouter);
 app.use('/api/timesheets', timeSheetsRouter);
-
+app.use('/api/categories', categoriesRouter);
 
 app.use('/api/flats', flatsRouter);
 

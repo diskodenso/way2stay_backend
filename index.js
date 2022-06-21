@@ -18,5 +18,6 @@ app.use(express.json());
 
 // app.use('/api/')
 app.use('/api/users', usersRouter);
+app.use('')
 
 app.listen(port, () => {console.log(`The server is listening on port ${port}`)});

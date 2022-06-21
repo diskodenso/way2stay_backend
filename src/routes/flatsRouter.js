@@ -6,13 +6,13 @@ import {
 import { verifyToken } from "../middlewares/verifyToken.js";
 const flatsRouter = Router();
 
-flatsRouter.route("/").get(getAllFlats).post(verifyToken, createNewFlat).all();
+flatsRouter.route("/").get(getAllFlats).post(createNewFlat).all();
 
 flatsRouter
   .route("/:flatId")
   .get(getSingleFlat)
-  .put(verifyToken, updateSingleFlat)
-  .delete(verifyToken, deleteSingleFlat)
+  .put(updateSingleFlat)
+  .delete(deleteSingleFlat)
   .all();
 export default flatsRouter;
 

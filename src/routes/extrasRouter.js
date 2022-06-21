@@ -8,8 +8,14 @@ import {
 
 const extrasRouter = Router();
 
-extrasRouter.route("/").get(getAllExtras).post(createNewExtra)
+extrasRouter.route("/")
+  .get(getAllExtras)
+  .post(createNewExtra)
+  .all();
 
-extrasRouter.route("/:extraId").put(updateExtra).delete(deleteExtra);
+extrasRouter.route("/:extraId")
+  .put(updateExtra)
+  .delete(deleteExtra)
+  .all();
 
 export default extrasRouter;

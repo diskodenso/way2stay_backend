@@ -4,15 +4,8 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const categorySchema = new Schema({
-    categories: [{
-        city: false,
-        lake: false,
-        suburbs: false,
-        rural: false,
-        moutains: false,
-        skiing: false,
-    }],
+  name: {type: String, required: true, unique: true},
   createdAt: { type: Date, default: Date.now },
-  modifiedAt: { type: Date, default: Date.now },
+  modifiedAt: { type: Date, default: Date.now }
 });
 export default model("Category", categorySchema);

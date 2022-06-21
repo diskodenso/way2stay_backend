@@ -10,12 +10,22 @@ import {
 
 const bookingsRouter = Router();
 
-bookingsRouter.route("/").post(createNewBooking);
+bookingsRouter.route("/")
+  .post(createNewBooking)
+  .all();
 
-bookingsRouter.route("/user/:userId").get(getAllBookingsByUserId);
+bookingsRouter.route("/user/:userId")
+  .get(getAllBookingsByUserId)
+  .all();
 
-bookingsRouter.route("/flat/:flatId").get(getAllBookingsByFlatId);
+bookingsRouter.route("/flat/:flatId")
+  .get(getAllBookingsByFlatId)
+  .all();
 
-bookingsRouter.route("/:bookingId").get(getSingleBookingById).put(updateBooking).delete(deleteBooking);
+bookingsRouter.route("/:bookingId")
+  .get(getSingleBookingById)
+  .put(updateBooking)
+  .delete(deleteBooking)
+  .all();
 
 export default bookingsRouter;

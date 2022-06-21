@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createComment, deleteComments, getAllCommentsByBookingId, getAllCommentsByUserId, updateComments } from '../controllers/commentsController';
+import { createComment, deleteComments, getAllCommentsByBookingId, getAllCommentsByUserId, updateComments } from '../controllers/commentsController.js';
 
 const commentsRouter = Router();
 
@@ -23,3 +23,5 @@ commentsRouter
     .put(updateComments)
     .delete(deleteComments)
     .all();
+
+export default commentsRouter;

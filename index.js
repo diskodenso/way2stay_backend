@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import usersRouter from './src/routes/usersRouter.js';
 import extrasRouter from './src/routes/extrasRouter.js';
+import commentsRouter from './src/routes/commentsRouter.js'
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use(express.json());
 // app.use('/api/')
 app.use('/api/users', usersRouter);
 app.use('/api/extras', extrasRouter);
+app.use('/api/comments', commentsRouter);
 
 app.listen(port, () => {console.log(`The server is listening on port ${port}`)});

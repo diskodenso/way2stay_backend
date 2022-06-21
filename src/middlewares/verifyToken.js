@@ -2,7 +2,7 @@
 import jwt from "jsonwebtoken";
 
 // create verify token variable
-const verifyToken = async (req, res, next) => {
+export const verifyToken = async (req, res, next) => {
   try {
     const { token } = req.headers;
     if (!token) {

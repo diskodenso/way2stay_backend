@@ -112,20 +112,28 @@ export const updateUser = async (req, res) => {
 export const logIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-    // find user and check if registered - use findOne (mongo method) method and search by email and select the password to check 
+    // find user and check if registered - use findOne (mongo method) method and search by email and select the password to check
     const findUser = await User.findOne({ email }).select("+password");
     // check if password is correct with bcrypt compare method
     const isPasswordCorrect = await bcrypt.compare(password, findUser.password);
     if (isPasswordCorrect) {
-      const token = jwt.sign({ email: findUser.email },
+      const token = jwt.sign(
+        { email: findUser.email },
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
-      res.status(200).set("Authorized", token).send("User successfully logged in");
+      res
+        .status(200)
+        .set("Authorized", token)
+        .send("User successfully logged in");
     } else {
-      res.status(401).send("Please create an account to log in")
+      res.status(401).send("Please create an account to log in");
     }
   } catch (error) {
-    res.status(500).json({error: error.message});
+    res.status(500).json({ error: error.message });
   }
+};
+// --- VERIFY SESSION CONTROLLER --- //
+export const verifySession = async (req, res) => {
+  res.status(200).send("Token successfully verified");
 };

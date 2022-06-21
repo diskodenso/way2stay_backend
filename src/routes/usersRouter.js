@@ -24,5 +24,14 @@ usersRouter
     .put(updateUser)
     .delete(deleteUser)
     .all();
+
+// signUp 
+usersRouter
+    .route("/signup").post(createNewUser); 
+// login
+usersRouter
+    .route("/login").post(logIn);
+    // verification
+usersRouter.route("/verify").get(verifyToken, verifySession); 
 // export Router
 export default usersRouter;

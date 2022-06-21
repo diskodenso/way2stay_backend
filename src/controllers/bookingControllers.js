@@ -1,4 +1,4 @@
-import Booking from "../models/Booking";
+import Booking from "../models/Booking.js";
 
 export const getAllBookingsByFlatId = async (req, res) => {
     const { flatId } = req.params;

@@ -1,3 +1,5 @@
 import { Router } from "express";
 
-export const timeSheetsRouter = Router();
+const timeSheetsRouter = Router();
+
+export default timeSheetsRouter;

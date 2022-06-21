@@ -13,8 +13,8 @@ export const getAllFlats = async (req, res) => {
 // --- GET SINGLE FLAT CONTROLLER --- //
 export const getSingleFlat = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const singleFlat = await Flat.findById(userId);
+    const { flatId } = req.params;
+    const singleFlat = await Flat.findById(flatId);
     res.status(200).json(singleFlat);
   } catch (error) {
     res.status(500).json({ erorr: error.message });

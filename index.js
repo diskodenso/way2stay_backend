@@ -3,6 +3,7 @@ import './src/db/mongooseClient.js';
 import express from 'express';
 import cors from 'cors';
 import usersRouter from './src/routes/usersRouter.js';
+import extrasRouter from './src/routes/extrasRouter.js';
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(express.json());
 
 // app.use('/api/')
 app.use('/api/users', usersRouter);
+app.use('/api/extras', extrasRouter);
 
 app.listen(port, () => {console.log(`The server is listening on port ${port}`)});

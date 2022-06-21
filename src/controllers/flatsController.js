@@ -126,10 +126,10 @@ export const updateSingleFlat = async (req, res) => {
       imagetitle,
       imagedescription,
     };
-    const resUpdatedFlat = await Flat.findByIdAndUpdate(flatId, updatedFlat, {
+    const updateSingleFlat = await Flat.findByIdAndUpdate(flatId, updatedFlat, {
       new: true,
     });
-    res.status(200).json(resUpdatedFlat);
+    res.status(200).json(updateSingleFlat);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

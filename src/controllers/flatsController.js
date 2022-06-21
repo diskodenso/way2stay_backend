@@ -1,5 +1,5 @@
 // import User Model
-import Flat from "../models/Flat";
+import Flat from "../models/Flat.js";
 
 // --- GET ALL FLAT CONTROLLER --- //
 export const getAllFlats = async (req, res) => {

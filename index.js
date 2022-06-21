@@ -5,7 +5,7 @@ import cors from 'cors';
 import usersRouter from './src/routes/usersRouter.js';
 import extrasRouter from './src/routes/extrasRouter.js';
 import commentsRouter from './src/routes/commentsRouter.js'
-import bookingRouter from './src/routes/bookingRouter.js'
+import bookingRouter from './src/routes/bookingsRouter.js'
 import flatsRouter from './src/routes/flatsRouter.js'
 import timeSheetsRouter from './src/routes/timeSheetsRouter.js'
 

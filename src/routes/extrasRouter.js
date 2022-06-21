@@ -10,6 +10,6 @@ const extrasRouter = Router();
 
 extrasRouter.route("/").get(getAllExtras).post(createNewExtra)
 
-extrasRouter.route("/:extraid").put(updateExtra).delete(deleteExtra);
+extrasRouter.route("/:extraId").put(updateExtra).delete(deleteExtra);
 
 export default extrasRouter;

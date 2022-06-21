@@ -19,7 +19,7 @@ usersRouter
     .all();
 // create a get route to see Single User, update Single User and delete a single User
 usersRouter
-    .route("/:id")
+    .route("/:userId")
     .get(getSingleUser)
     .put(updateUser)
     .delete(deleteUser)

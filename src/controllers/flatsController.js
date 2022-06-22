@@ -1,5 +1,9 @@
 // import User Model
 import Flat from "../models/Flat.js";
+import mongoose from "mongoose";
+// import object ID from mongoose
+import pkg from "mongoose";
+const { ObjectId } = pkg;
 
 // --- GET ALL FLAT CONTROLLER --- //
 export const getAllFlats = async (req, res) => {
@@ -10,6 +14,17 @@ export const getAllFlats = async (req, res) => {
     res.status(500).json(error);
   }
 };
+// --- GET ALL FLATS CONTROLLER --- //
+export const getAllFlatsByUserId = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const getAllFlatsByUserId = await Flat.findById(userId);
+    res.status(200).json(getAllFlatsByUserId);
+  } catch (error) {
+    res.status(500).json({ erorr: error.message });
+  }
+};
+
 // --- GET SINGLE FLAT CONTROLLER --- //
 export const getSingleFlat = async (req, res) => {
   try {
@@ -21,7 +36,7 @@ export const getSingleFlat = async (req, res) => {
   }
 };
 // --- CREATE NEW FLAT CONTROLLER --- //
-export const createNewFlat = async (req, res) => {
+export const createFlat = async (req, res) => {
   try {
     const {
       isActive,
@@ -44,9 +59,11 @@ export const createNewFlat = async (req, res) => {
       lang,
       imagetitle,
       imagedescription,
+      imageurl,
     } = req.body;
+    console.log(req.body);
     const flatDetails = {
-      userId,
+      userId: mongoose.Types.ObjectId(userId),
       isActive,
       title,
       description,
@@ -56,6 +73,7 @@ export const createNewFlat = async (req, res) => {
         bedroom,
         bathroom,
         floor,
+        extras,
         pets,
         kids,
       },
@@ -72,12 +90,13 @@ export const createNewFlat = async (req, res) => {
       image: {
         imagetitle,
         imagedescription,
+        imageurl,
       },
     };
     const updatedFlat = await Flat.create(flatDetails, { new: true });
     res.status(201).json(updatedFlat);
   } catch (error) {
-    res.status(500).json({ erorr: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -141,6 +160,6 @@ export const deleteSingleFlat = async (req, res) => {
     await Flat.findByIdAndDelete(flatId);
     res.status(200).send("User successfully deleted");
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ error: error.message });
   }
 };

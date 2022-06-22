@@ -2,7 +2,7 @@
 import { Router } from "express";
 // import controllers
 import {
-  createNewUser,
+  createUser,
   deleteUser,
   getAllUsers,
   getSingleUser,
@@ -15,7 +15,7 @@ import {verifyToken} from '../middlewares/verifyToken.js';
 // declare userRouter
 const usersRouter = Router();
 // create a get route to see All Users and a post route to create a new User
-usersRouter.route("/").get(getAllUsers).post(createNewUser).all();
+usersRouter.route("/").get(getAllUsers).post(createUser).all();
 // create a get route to see Single User, update Single User and delete a single User
 usersRouter
   .route("/:userId")
@@ -25,7 +25,7 @@ usersRouter
   .all();
 
 // signUp
-usersRouter.route("/signup").post(createNewUser); // change to "/".post
+usersRouter.route("/signup").post(createUser); // change to "/".post
 // login
 usersRouter.route("/login").post(verifyToken, logIn);
 // verification

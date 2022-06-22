@@ -7,7 +7,7 @@ const timeSheetSchema = new Schema({
   flat: { type: ObjectId, ref: "Flat", required: [true, "Flat is required"] },
   start: { type: Date, required: true },
   end: { type: Date, required: true },
-  available: Boolean,
+  available: { type: Boolean, required: true },
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },
 });

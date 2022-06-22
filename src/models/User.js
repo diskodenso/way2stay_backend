@@ -4,75 +4,75 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
-    username: {
-        type: String,
-        required: [true, "Username is mandatory"],
-        unique: [true, "Username must be uniqe"]
+  username: {
+    type: String,
+    required: [true, "Username is mandatory"],
+    unique: [true, "Username must be uniqe"],
+  },
+  password: {
+    type: String,
+    required: [true, "Password is required"],
+    select: false,
+  },
+  contact: {
+    email: {
+      type: String,
+      required: true,
+      unique: [true, "email must be uniqe"],
     },
-    password: {
-        type: String,
-        required: [true, "Password is required"],
-        select: false,
+    phonenumber: {
+      type: String,
+      required: false,
     },
-    contact: {
-        email: {
-            type: String,
-            required: true,
-            unique: [true, "email must be uniqe"]
-        },
-        phonenumber: {
-            type: String,
-            required: false
-        },
+  },
+  firstname: {
+    type: String,
+    required: false,
+  },
+  lastname: {
+    type: String,
+    required: false,
+  },
+  birthdate: {
+    type: Date,
+    required: false,
+  },
+  address: {
+    street: {
+      type: String,
+      required: false,
     },
-    firstname: {
-        type: String,
-        required: false
+    housenumber: {
+      type: Number,
+      required: false,
     },
-    lastname: {
-        type: String,
-        required: false
+    postalcode: {
+      type: Number,
+      required: false,
     },
-    birthdate: {
-        type: Date,
-        required: false
+    city: {
+      type: String,
+      required: false,
     },
-    address: {
-        street: {
-            type: String,
-            required: false
-        },
-        housenumber: {
-            type: Number,
-            required: false
-        },
-        postalcode: {
-            type: Number,
-            required: false
-        },
-        city: {
-            type: String,
-            required: false
-        },
-    },
+  },
 
-    // cloudiary just needs URL so thats enough
-    profilePicUrl: {
-        type: String,
-        required: false
-    },
-    isActive: {
-        type: Boolean,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    modifiedAt: {
-        type: Date,
-        default: Date.now
-    },
+  // cloudiary just needs URL so thats enough
+  profilePicUrl: {
+    type: String,
+    required: false,
+  },
+  isActive: {
+    type: Boolean,
+    defaut: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  modifiedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default model("User", userSchema);

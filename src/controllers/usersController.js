@@ -1,6 +1,9 @@
 // import User Model
 import User from "../models/User.js";
 // import bcrypt to encrypt password
+// import jwt
+import jwt from "jsonwebtoken";
+
 import bcrypt from "bcrypt";
 // each controller needs to be exported seperately
 
@@ -26,7 +29,7 @@ export const getSingleUser = async (req, res) => {
 };
 
 // --- CREATE NEW USER CONTROLLER --- //
-export const createNewUser = async (req, res) => {
+export const createUser = async (req, res) => {
   try {
     const { isActive, email, username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -46,8 +49,9 @@ export const createNewUser = async (req, res) => {
     if (token && newUser) {
       res
         .status(201)
-        .set("Authorisation", token)
+        .set("authorization", token)
         .send("User successfully created");
+      console.log(res.headers.authorization);
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -124,8 +128,9 @@ export const logIn = async (req, res) => {
       );
       res
         .status(200)
-        .set("Authorized", token)
+        .set("authorization", token)
         .send("User successfully logged in");
+      console.log(res);
     } else {
       res.status(401).send("Please create an account to log in");
     }

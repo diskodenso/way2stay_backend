@@ -1,10 +1,11 @@
 // import mongoose
 import mongoose from "mongoose";
+import User from "./User.js";
 // deconstruct Schema and Model
 const { Schema, model, ObjectId } = mongoose;
 
 const flatSchema = new Schema({
-  user: { type: ObjectId, ref: "User", required: [true, "User is required"] },
+  userId: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   title: { type: String, required: true },
   description: { type: String, required: true },
   details: {
@@ -13,34 +14,41 @@ const flatSchema = new Schema({
     bedroom: { type: Number, required: false },
     bathroom: { type: Number, required: false },
     floor: { type: Number, required: false },
-    extras: {
-      type: ObjectId,
-      ref: "Extra",
-      required: false,
-    },
-    pets: { type: Boolean, required: false },
-    kids: { type: Boolean, default: false },
-    categories: {
-      type: ObjectId,
-      ref: "Category",
-      required: [true, "Category is required"],
-    },
+    extras: [
+      {
+        type: String,
+        ref: "Extra",
+        required: false,
+      },
+    ],
+    pets: { type: Boolean, required: false, default: false },
+    kids: { type: Boolean, required: false, default: false },
+    categories: [
+      {
+        type: ObjectId,
+        ref: "Category",
+        required: [false, "Category is not required"],
+      },
+    ],
   },
   location: {
-    street: { type: String, required: true },
-    housenumber: { type: Number, required: true },
-    postalcode: { type: Number, required: true },
-    city: { type: String, required: true },
+    street: { type: String, required: false },
+    housenumber: { type: String, required: false },
+    postalcode: { type: Number, required: false },
+    city: { type: String, required: false },
   },
   coordinates: {
     lat: { type: Number, required: false },
     lang: { type: Number, required: false },
   },
-  images: {
-    imagetitle: { type: String, required: true },
-    imagedescription: { type: Number, required: true },
-  },
-  isActive: { type: Boolean, required: true },
+  images: [
+    {
+      imagetitle: { type: String, required: false },
+      imagedescription: { type: Number, required: false },
+      imageurl: { type: String, required: false },
+    },
+  ],
+  isActive: { type: Boolean, required: true, default: true },
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },
 });

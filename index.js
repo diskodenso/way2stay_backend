@@ -32,6 +32,4 @@ app.use('/api/flats', flatsRouter);
 app.use('/api/timesheets', timeSheetsRouter);
 app.use('/api/categories', categoriesRouter);
 
-app.use('/api/flats', flatsRouter);
-
 app.listen(port, () => {console.log(`The server is listening on port ${port}`)});

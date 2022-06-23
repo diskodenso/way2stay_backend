@@ -17,8 +17,8 @@ export const getAllFlats = async (req, res) => {
 // --- GET ALL FLATS CONTROLLER --- //
 export const getAllFlatsByUserId = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const getAllFlatsByUserId = await Flat.findById(userId);
+    const { userId } = req.body;
+    const getAllFlatsByUserId = await Flat.find({userId: userId});
     res.status(200).json(getAllFlatsByUserId);
   } catch (error) {
     res.status(500).json({ erorr: error.message });
@@ -38,9 +38,9 @@ export const getSingleFlat = async (req, res) => {
 // --- CREATE NEW FLAT CONTROLLER --- //
 export const createFlat = async (req, res) => {
   try {
-    const { userId } = req.params;
     const {
       isActive,
+      userId,
       title,
       description,
       maxPersons,
@@ -144,7 +144,7 @@ export const updateSingleFlat = async (req, res) => {
       imagetitle,
       imagedescription,
     };
-    const updateSingleFlat = await Flat.findByIdAndUpdate(flatId, updatedFlat, {
+    const updatedSingleFlat = await Flat.findByIdAndUpdate(flatId, updatedFlat, {
       new: true,
     });
     res.status(200).json(updateSingleFlat);

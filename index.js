@@ -9,7 +9,7 @@ import bookingRouter from './src/routes/bookingsRouter.js'
 import flatsRouter from './src/routes/flatsRouter.js'
 import timeSheetsRouter from './src/routes/timeSheetsRouter.js'
 import categoriesRouter from './src/routes/categoriesRouter.js';
-
+import reviewsRouter from './src/routes/reviewsRouter.js';
 
 const app = express();
 
@@ -31,5 +31,7 @@ app.use('/api/bookings', bookingRouter);
 app.use('/api/flats', flatsRouter);
 app.use('/api/timesheets', timeSheetsRouter);
 app.use('/api/categories', categoriesRouter);
+app.use("/api/reviews", reviewsRouter);
+
 
 app.listen(port, () => {console.log(`The server is listening on port ${port}`)});

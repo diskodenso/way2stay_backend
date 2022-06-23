@@ -10,9 +10,11 @@ import {
 const timeSheetsRouter = Router();
 
 timeSheetsRouter.route("/")
-    .get(getAllTimeSheetsByFlatId)
     .post(createTimeSheet)
     .all();
+
+timeSheetsRouter.route("/:flatId")
+    .get(getAllTimeSheetsByFlatId)
 
 timeSheetsRouter.route("/:timeSheetId")
     .get(getSingleTimeSheetById)

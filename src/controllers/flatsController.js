@@ -61,7 +61,7 @@ export const createFlat = async (req, res) => {
       imagedescription,
       imageurl,
     } = req.body;
-    console.log(req.body);
+   // console.log(req.body);
     const flatDetails = {
       userId: mongoose.Types.ObjectId(userId),
       isActive,
@@ -148,7 +148,7 @@ export const updateSingleFlat = async (req, res) => {
     const updateSingleFlat = await Flat.findByIdAndUpdate(flatId, updatedFlat, {
       new: true,
     });
-    res.status(200).json(updateSingleFlat);
+    res.status(200).json(updatedFlat);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

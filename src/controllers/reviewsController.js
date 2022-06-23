@@ -16,6 +16,28 @@ export const getAllReviews = async (req, res) => {
   }
 };
 
+// --- CREATE  REVIEWS BY FLAT ID, BOOKING ID AND USER IDbCONTROLLER --- //
+// flatid anhand der booking id
+// userid anhand der flatid
+export const createReview = async (req, res) => {
+  try {
+    const { userId, flatId, bookingId, score, text } = req.body;
+    const reviewDetails = {
+      userId: mongoose.Types.ObjectId(userId),
+      flatId: mongoose.Types.ObjectId(flatId),
+      bookingId: mongoose.Types.ObjectId(bookingId),
+      review: {
+        score,
+        text,
+      },
+    };
+    const createdReview = await Review.create(reviewDetails);
+    res.status(200).json(createdReview);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 // --- GET ALL REVIEWS BY FLAT ID CONTROLLER --- //
 export const getAllReviewsByFlatId = async (req, res) => {
   try {
@@ -43,7 +65,9 @@ export const getAllReviewsByBookingId = async (req, res) => {
   try {
     const { bookingId } = req.body;
     res.status(200).json(allReviewsByBookingId);
-    const allReviewsByBookingId = await Review.find({ bookingId: bookingId });
+    const allReviewsByBookingId = await Review.find({
+      bookingId: bookingId,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -52,37 +76,22 @@ export const getAllReviewsByBookingId = async (req, res) => {
 // --- GET SINGLE REVIEW CONTROLLER --- //
 export const getSingleReview = async (req, res) => {
   try {
-    const { id } = req.params;
-    const singleReview = await Review.findById(id);
+    const { reviewsId } = req.params;
+    console.log(reviewsId);
+      const singleReview = await Review.findById({ reviewsId:  reviewId});
+    console.log(singleReview);
     res.status(200).json(singleReview);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// --- CREATE  REVIEWS BY FLAT ID, BOOKING ID AND USER IDbCONTROLLER --- //
-// flatid anhand der booking id
-// userid anhand der flatid
-export const createReview = async (req, res) => {
-  try {
-    const { userId, flatId, bookingId, score, text } = req.body;
-    const reviewDetails = {
-      userId: mongoose.Types.ObjectId(userId),
-      flatId: mongoose.Types.ObjectId(flatId),
-      bookingId: mongoose.Types.ObjectId(bookingId),
-    };
-    const createdReview = await Review.create(reviewDetails);
-    res.status(200).json(createdReview);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
 
 // --- DELETE SINGLE REVIEW CONTROLLER --- //
 export const deleteReview = async (req, res) => {
   try {
-    const { reviewId } = req.params;
-    await Review.findByIdAndDelete(reviewId);
+    const { revieswId } = req.params;
+    await Review.findByIdAndDelete(reviewsId);
     res.status(200).json("Review successfully deleted");
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -92,20 +101,23 @@ export const deleteReview = async (req, res) => {
 // --- UPDATE SINGLE REVIEW CONTROLLER --- //
 export const updateReview = async (req, res) => {
   try {
-    const { reviewId } = req.params;
+    const { reviewsId } = req.params;
     const { userId, flatId, bookingId, score, text } = req.body;
     const reviewDetails = {
       userId,
       flatId,
       bookingId,
-      score,
-      text,
+      review: {
+        score,
+        text,
+      },
     };
     const updatedReview = await Review.findByIdAndUpdate(
-      reviewId,
+      reviewsId,
       reviewDetails,
       { new: true }
     );
+    res.status(200).json(updatedReview);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

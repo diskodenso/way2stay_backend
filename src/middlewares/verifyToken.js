@@ -1,7 +1,7 @@
 // import jwt
 import jwt from "jsonwebtoken";
-
 // create verify token variable
+
 export const verifyToken = async (req, res, next) => {
   try {
     const { token } = req.headers;
@@ -14,7 +14,9 @@ export const verifyToken = async (req, res, next) => {
       if (isEmailBelongsToToken) {
         // we need to create a new property
         req.user = isEmailBelongsToToken;
-        res.status(200).json("token is valid wuhu")
+
+        console.log;
+        res.status(200).json("token is valid wuhu");
         next();
       }
     }

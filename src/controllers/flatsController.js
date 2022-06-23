@@ -38,10 +38,9 @@ export const getSingleFlat = async (req, res) => {
 // --- CREATE NEW FLAT CONTROLLER --- //
 export const createFlat = async (req, res) => {
   try {
-    const { flatId } = req.params;
+    const { userId } = req.params;
     const {
       isActive,
-      userId,
       title,
       description,
       maxPersons,
@@ -62,7 +61,7 @@ export const createFlat = async (req, res) => {
       imagedescription,
       imageurl,
     } = req.body;
-    // console.log(req.body);
+    console.log(req.body);
     const flatDetails = {
       userId: mongoose.Types.ObjectId(userId),
       isActive,
@@ -94,7 +93,7 @@ export const createFlat = async (req, res) => {
         imageurl,
       },
     };
-    const createdFlat = await Flat.create(flatId, flatDetails, { new: true });
+    const createdFlat = await Flat.create(flatDetails);
     res.status(201).json(createdFlat);
   } catch (error) {
     res.status(500).json({ error: error.message });

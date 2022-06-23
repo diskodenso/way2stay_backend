@@ -5,9 +5,10 @@ import User from "./User.js";
 const { Schema, model, ObjectId } = mongoose;
 
 const flatSchema = new Schema({
-  userId: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  title: { type: String, required: true },
-  description: { type: String, required: true },
+  userId: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  // userId: { type: ObjectId },
+  title: { type: String, required: false },
+  description: { type: String, required: false },
   details: {
     maxPersons: { type: Number, required: false },
     size: { type: Number, required: false },
@@ -48,7 +49,7 @@ const flatSchema = new Schema({
       imageurl: { type: String, required: false },
     },
   ],
-  isActive: { type: Boolean, required: true, default: true },
+  isActive: { type: Boolean, required: false, default: true },
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },
 });

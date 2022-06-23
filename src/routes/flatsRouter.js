@@ -6,7 +6,7 @@ import { createFlat, deleteSingleFlat, getAllFlats, getSingleFlat, updateSingleF
 // import { verifyToken } from "../middlewares/verifyToken.js";
 const flatsRouter = Router();
 
-flatsRouter.route("/").get(getAllFlats).post(createFlat).all();
+flatsRouter.route("/").get(getAllFlats).all();
 
 flatsRouter
   .route("/:flatId")
@@ -15,6 +15,6 @@ flatsRouter
   .delete(deleteSingleFlat)
   .all();
 
-flatsRouter.route("/:userId").get(getAllFlatsByUserId).all();
+flatsRouter.route("/:userId").get(getAllFlatsByUserId).post(createFlat).all();
 export default flatsRouter;
 

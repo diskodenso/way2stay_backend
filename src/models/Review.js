@@ -5,19 +5,9 @@ const { Schema, model } = mongoose;
 
 const reviewSchema = new Schema({
   // refer to flats - each review needs to be connected to a booking
-  userId: {
-    type: String,
-    required: [true, "UserId is mandatory"],
-  },
-  flatId: {
-    type: String,
-    ref: "Flat",
-    required: [true, "FlatId is mandatory"],
-  },
-  bookingId: {
-    type: String,
-    required: [true, "BookingId is mandatory"],
-  },
+  userId: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  flatId: [{ type: Schema.Types.ObjectId, ref: "Flat" }],
+  bookingId: [{ type: Schema.Types.ObjectId, ref: "Booking" }],
   comment: {
     score: { type: Number, required: true },
     body: { type: String, trim: true, required: true },

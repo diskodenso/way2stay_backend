@@ -43,15 +43,16 @@ export const createUser = async (req, res) => {
     });
     const token = jwt.sign(
       { email: newUser.email }, // payload
-      process.env.JWT_SECRET, // jwt secret
-      { expiresIn: "1h" } // options
+      process.env.JWT_SECRET // jwt secret
+      // { expiresIn: "1h" } // options
     );
+    console.log(token);
     if (token && newUser) {
       res
         .status(201)
         .set("authorization", token)
         .send("User successfully created");
-      console.log(res.headers.authorization);
+      // console.log(res.headers.authorization);
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -116,15 +117,16 @@ export const updateUser = async (req, res) => {
 export const logIn = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password)
     // find user and check if registered - use findOne (mongo method) method and search by email and select the password to check
-    const findUser = await User.findOne({ email }).select("+password");
+    const findUser = await User.findOne({contact:{email}}).select("+password");
     // check if password is correct with bcrypt compare method
     const isPasswordCorrect = await bcrypt.compare(password, findUser.password);
     if (isPasswordCorrect) {
       const token = jwt.sign(
         { email: findUser.email },
-        process.env.JWT_SECRET,
-        { expiresIn: "1h" }
+        process.env.JWT_SECRET
+        // { expiresIn: "1h" }
       );
       res
         .status(200)

@@ -5,14 +5,16 @@ import jwt from "jsonwebtoken";
 export const verifyToken = async (req, res, next) => {
   try {
     const { token } = req.headers;
+    console.log(token);
     if (!token) {
-      req.status(401).json("You are not authorized");
+      res.status(401).json("You are not authorized");
     } else {
       // use jwt verify method to check if verified
       const isEmailBelongsToToken = jwt.verify(token, process.env.JWT_SECRET);
-        if (isEmailBelongsToToken) {
-          // we need to create a new property 
+      if (isEmailBelongsToToken) {
+        // we need to create a new property
         req.user = isEmailBelongsToToken;
+        res.status(200).json("token is valid wuhu")
         next();
       }
     }

@@ -22,12 +22,6 @@ reviewsRouter.route("/").get(getAllReviews).post(createReview);
 // verification
 reviewsRouter.route("/verify").get(verifyToken, verifySession);
 
-// get single reviews, delete and update single reviews Route
-reviewsRouter
-  .route("/:reviewsId")
-  .get(getSingleReview)
-  .delete(deleteReview)
-  .put(updateReview);
 // get All Reviews By FlatId
 reviewsRouter.route("/flats/:flatId").get(getAllReviewsByFlatId);
 
@@ -36,5 +30,13 @@ reviewsRouter.route("/users/:userId").get(getAllReviewsByUserId);
 
 // get All Reviews By bookingId
 reviewsRouter.route("/booking/:bookingId").get(getAllReviewsByBookingId);
+
+// get single reviews, delete and update single reviews Route
+reviewsRouter
+  .route("/:reviewsId")
+  .get(getSingleReview)
+  .delete(deleteReview)
+  .put(updateReview);
+
 
 export default reviewsRouter;

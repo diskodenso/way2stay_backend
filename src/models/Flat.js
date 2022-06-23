@@ -7,8 +7,8 @@ const { Schema, model, ObjectId } = mongoose;
 const flatSchema = new Schema({
   userId: [{ type: Schema.Types.ObjectId, ref: "User" }],
   // userId: { type: ObjectId },
-  title: { type: String, required: false },
-  description: { type: String, required: false },
+  title: { type: String, required: true },
+  description: { type: String, required: true },
   details: {
     maxPersons: { type: Number, required: false },
     size: { type: Number, required: false },

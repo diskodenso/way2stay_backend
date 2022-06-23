@@ -8,7 +8,7 @@ const reviewSchema = new Schema({
   userId: [{ type: Schema.Types.ObjectId, ref: "User" }],
   flatId: [{ type: Schema.Types.ObjectId, ref: "Flat" }],
   bookingId: [{ type: Schema.Types.ObjectId, ref: "Booking" }],
-  comment: {
+  review: {
     score: { type: Number, required: true },
     text: { type: String, trim: true, required: true },
     createdAt: { type: Date, default: Date.now },

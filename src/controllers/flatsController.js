@@ -38,6 +38,7 @@ export const getSingleFlat = async (req, res) => {
 // --- CREATE NEW FLAT CONTROLLER --- //
 export const createFlat = async (req, res) => {
   try {
+    const { flatId } = req.params;
     const {
       isActive,
       userId,
@@ -61,7 +62,7 @@ export const createFlat = async (req, res) => {
       imagedescription,
       imageurl,
     } = req.body;
-   // console.log(req.body);
+    // console.log(req.body);
     const flatDetails = {
       userId: mongoose.Types.ObjectId(userId),
       isActive,
@@ -93,8 +94,8 @@ export const createFlat = async (req, res) => {
         imageurl,
       },
     };
-    const updatedFlat = await Flat.create(flatDetails, { new: true });
-    res.status(201).json(updatedFlat);
+    const createdFlat = await Flat.create(flatId, flatDetails, { new: true });
+    res.status(201).json(createdFlat);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -105,7 +106,6 @@ export const updateSingleFlat = async (req, res) => {
   try {
     const { flatId } = req.params;
     const {
-      isActive,
       title,
       description,
       maxPersons,
@@ -148,7 +148,7 @@ export const updateSingleFlat = async (req, res) => {
     const updateSingleFlat = await Flat.findByIdAndUpdate(flatId, updatedFlat, {
       new: true,
     });
-    res.status(200).json(updatedFlat);
+    res.status(200).json(updateSingleFlat);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

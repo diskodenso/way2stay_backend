@@ -41,7 +41,8 @@ export const createReview = async (req, res) => {
 // --- GET ALL REVIEWS BY FLAT ID CONTROLLER --- //
 export const getAllReviewsByFlatId = async (req, res) => {
   try {
-    const { flatId } = req.body;
+    const { flatId } = req.params;
+    console.log(req.params);
     const allReviewsByFlatId = await Review.find({ flatId: flatId });
     res.status(200).json(allReviewsByFlatId);
   } catch (error) {
@@ -52,7 +53,7 @@ export const getAllReviewsByFlatId = async (req, res) => {
 // --- GET ALL REVIEWS BY USER ID CONTROLLER --- //
 export const getAllReviewsByUserId = async (req, res) => {
   try {
-    const { userId } = req.body;
+    const { userId } = req.params;
     const allReviewsByUserId = await Review.find({ userId: userId });
     res.status(200).json(allReviewsByUserId);
   } catch (error) {
@@ -63,11 +64,11 @@ export const getAllReviewsByUserId = async (req, res) => {
 // --- GET ALL REVIEWS BY USER ID CONTROLLER --- //
 export const getAllReviewsByBookingId = async (req, res) => {
   try {
-    const { bookingId } = req.body;
-    res.status(200).json(allReviewsByBookingId);
+    const { bookingId } = req.params;
     const allReviewsByBookingId = await Review.find({
       bookingId: bookingId,
     });
+    res.status(200).json(allReviewsByBookingId);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -78,7 +79,7 @@ export const getSingleReview = async (req, res) => {
   try {
     const { reviewsId } = req.params;
     console.log(reviewsId);
-      const singleReview = await Review.findById({ reviewsId:  reviewId});
+    const singleReview = await Review.findById(reviewsId);
     console.log(singleReview);
     res.status(200).json(singleReview);
   } catch (error) {
@@ -86,12 +87,11 @@ export const getSingleReview = async (req, res) => {
   }
 };
 
-
 // --- DELETE SINGLE REVIEW CONTROLLER --- //
 export const deleteReview = async (req, res) => {
   try {
     const { revieswId } = req.params;
-    await Review.findByIdAndDelete(reviewsId);
+    await Review.findByIdAndDelete(revieswId);
     res.status(200).json("Review successfully deleted");
   } catch (error) {
     res.status(500).json({ error: error.message });

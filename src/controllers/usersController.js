@@ -48,6 +48,8 @@ export const createUser = async (req, res) => {
     );
     console.log(token);
     if (token && newUser) {
+      const userExists = (await User.find({ email: newUser.email })) === null;
+      console.log(User.find({ email: newUser.email }));
       res
         .status(201)
         .set("authorization", token)
@@ -84,6 +86,7 @@ export const updateUser = async (req, res) => {
     postalcode,
     phonenumber,
     email,
+    favorites,
     isActive,
   } = req.body;
   try {
@@ -102,6 +105,7 @@ export const updateUser = async (req, res) => {
         housenumber,
         postalcode,
       },
+      favorites,
       isActive,
     };
     const resUpdatedUser = await User.findByIdAndUpdate(userId, updatedUser, {
@@ -109,7 +113,7 @@ export const updateUser = async (req, res) => {
     });
     res.status(200).json(resUpdatedUser);
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 

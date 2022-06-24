@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createNewBooking,
   deleteBooking,
+  getAllBookings,
   getAllBookingsByUserId,
   getAllBookingsByFlatId,
   getSingleBookingById,
@@ -10,19 +11,14 @@ import {
 
 const bookingsRouter = Router();
 
-bookingsRouter.route("/")
-  .post(createNewBooking)
-  .all();
+bookingsRouter.route("/").get(getAllBookings).post(createNewBooking).all();
 
-bookingsRouter.route("/user/:userId")
-  .get(getAllBookingsByUserId)
-  .all();
+bookingsRouter.route("/user/:userId").get(getAllBookingsByUserId).all();
 
-bookingsRouter.route("/flat/:flatId")
-  .get(getAllBookingsByFlatId)
-  .all();
+bookingsRouter.route("/flat/:flatId").get(getAllBookingsByFlatId).all();
 
-bookingsRouter.route("/:bookingId")
+bookingsRouter
+  .route("/:bookingId")
   .get(getSingleBookingById)
   .put(updateBooking)
   .delete(deleteBooking)

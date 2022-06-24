@@ -7,7 +7,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: [true, "Username is mandatory"],
-    unique: [true, "Username must be uniqe"],
+    unique: [true, "Username must be unique"],
   },
   password: {
     type: String,
@@ -18,7 +18,7 @@ const userSchema = new Schema({
     email: {
       type: String,
       required: true,
-      unique: [true, "email must be uniqe"],
+      unique: [true, "email must be unique"],
     },
     phonenumber: {
       type: String,
@@ -55,7 +55,13 @@ const userSchema = new Schema({
       required: false,
     },
   },
-
+  favorites: [
+    {
+      type: String,
+      required: false,
+      unique: true,
+    },
+  ],
   // cloudiary just needs URL so thats enough
   profilePicUrl: {
     type: String,

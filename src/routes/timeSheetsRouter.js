@@ -1,19 +1,20 @@
 import { Router } from "express";
 import {
-    createTimeSheet,
-    getSingleTimeSheetById,
-    getAllTimeSheetsByFlatId,
-    updateTimeSheet,
-    deleteTimeSheet,
-  } from "../controllers/timeSheetsController.js";
+  createTimeSheet,
+  getSingleTimeSheetById,
+  getAllTimeSheetsByFlatId,
+  updateTimeSheet,
+  deleteTimeSheet,
+  getAllTimeSheets,
+} from "../controllers/timeSheetsController.js";
 
 const timeSheetsRouter = Router();
 
-timeSheetsRouter.route("/")
+timeSheetsRouter.route("/").get(getAllTimeSheets)
     .post(createTimeSheet)
     .all();
 
-timeSheetsRouter.route("/:flatId")
+timeSheetsRouter.route("/flats/:flatId")
     .get(getAllTimeSheetsByFlatId)
 
 timeSheetsRouter.route("/:timeSheetId")

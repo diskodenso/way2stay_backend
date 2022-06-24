@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const { Schema, model, ObjectId } = mongoose;
 
 const timeSheetSchema = new Schema({
-  flat: { type: ObjectId, ref: "Flat", required: [true, "Flat is required"] },
+  flatId: { type: ObjectId, ref: "Flat", required: [true, "Flat is required"] },
   start: { type: Date, required: true },
   end: { type: Date, required: true },
   available: { type: Boolean, required: true },

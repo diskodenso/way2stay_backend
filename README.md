@@ -1,11 +1,11 @@
 <div id="top"></div>
 
-<center> <img src="https://i.ibb.co/JmkTqwz/Logo-W.png" alt="Logo" width="75"/> </center>
+<div align="center"> <img src="https://i.ibb.co/JmkTqwz/Logo-W.png" alt="Logo" width="75"/> </div>
 
-# <center> &mdash;&mdash;&mdash;&mdash;&mdash; way2stay Backend &mdash;&mdash;&mdash;&mdash;&mdash; </center>
+# <div align="center"> &mdash;&mdash;&mdash;&mdash;&mdash; way2stay Backend &mdash;&mdash;&mdash;&mdash;&mdash; </div>
 
-#### <center>[go to the frontend &rarr;](https://github.com/diskodenso/way2stay_frontend)</center>
-#### <center>[go to the website &rarr;](https://www.google.com)</center>
+#### <div align="center">[go to the frontend &rarr;](https://github.com/diskodenso/way2stay_frontend)</div>
+#### <div align="center">[go to the website &rarr;](https://www.google.com)</div>
 
 <p align="right">&darr; <a href="#end">go to the bottom</a> &darr;</p>
 

@@ -1,8 +1,13 @@
 import { Router } from "express";
-import { createFlat, deleteSingleFlat, getAllFlats, getSingleFlat, updateSingleFlat, getAllFlatsByUserId } from "../controllers/flatsController.js";
 import {
-  verifySession,
-} from "../controllers/usersController.js";
+  createFlat,
+  deleteSingleFlat,
+  getAllFlats,
+  getSingleFlat,
+  updateSingleFlat,
+  getAllFlatsByUserId,
+} from "../controllers/flatsController.js";
+import { verifySession } from "../controllers/usersController.js";
 import { verifyToken } from "../middlewares/verifyToken.js";
 const flatsRouter = Router();
 
@@ -19,9 +24,11 @@ flatsRouter
   .delete(deleteSingleFlat)
   .all();
 
-// get all flats by User Id 
-flatsRouter.route("users/:userId").get(getAllFlatsByUserId).post(createFlat).all();
-
+// get all flats by User Id
+flatsRouter
+  .route("users/:userId")
+  .get(getAllFlatsByUserId)
+  .post(createFlat)
+  .all();
 
 export default flatsRouter;
-

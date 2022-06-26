@@ -1,10 +1,17 @@
 import { Router } from 'express';
-import { createComment, deleteComments, getAllCommentsByBookingId, getAllCommentsByUserId, updateComments } from '../controllers/commentsController.js';
+import {
+  createComment,
+  deleteComments,
+  getAllCommentsByBookingId,
+  getAllCommentsByUserId,
+  updateComments,
+  getAllComments,
+} from "../controllers/commentsController.js";
 
 const commentsRouter = Router();
 
 commentsRouter
-    .route('/')
+    .route('/').get(getAllComments)
     .post(createComment)
     .all();
 

@@ -48,8 +48,6 @@ export const createUser = async (req, res) => {
     );
     console.log(token);
     if (token && newUser) {
-      const userExists = (await User.find({ email: newUser.email })) === null;
-      console.log(User.find({ email: newUser.email }));
       res
         .status(201)
         .set("authorization", token)

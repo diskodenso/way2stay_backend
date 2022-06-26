@@ -14,8 +14,6 @@ export const verifyToken = async (req, res, next) => {
       if (isEmailBelongsToToken) {
         // we need to create a new property
         req.user = isEmailBelongsToToken;
-
-        console.log;
         res.status(200).json("token is valid wuhu");
         next();
       }

@@ -5,12 +5,12 @@ import User from "./User.js";
 const { Schema, model, ObjectId } = mongoose;
 
 const flatSchema = new Schema({
-  userId: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  userId: { type: Schema.Types.ObjectId, ref: "User" },
   // userId: { type: ObjectId },
   title: { type: String, required: true },
   description: { type: String, required: true },
   details: {
-    maxPersons: { type: Number, required: false },
+    maxpersons: { type: Number, required: false },
     size: { type: Number, required: false },
     bedroom: { type: Number, required: false },
     bathroom: { type: Number, required: false },

@@ -18,8 +18,8 @@ export const getAllFlats = async (req, res) => {
 export const getAllFlatsByUserId = async (req, res) => {
   try {
     const { userId } = req.body;
-    const getAllFlatsByUserId = await Flat.find({userId: userId});
-    res.status(200).json(getAllFlatsByUserId);
+    const allFlatsByUserId = await Flat.find({ userId: userId });
+    res.status(200).json(allFlatsByUserId);
   } catch (error) {
     res.status(500).json({ erorr: error.message });
   }
@@ -144,9 +144,13 @@ export const updateSingleFlat = async (req, res) => {
       imagetitle,
       imagedescription,
     };
-    const updatedSingleFlat = await Flat.findByIdAndUpdate(flatId, updatedFlat, {
-      new: true,
-    });
+    const updatedSingleFlat = await Flat.findByIdAndUpdate(
+      flatId,
+      updatedFlat,
+      {
+        new: true,
+      }
+    );
     res.status(200).json(updateSingleFlat);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -157,7 +161,7 @@ export const deleteSingleFlat = async (req, res) => {
   try {
     const { flatId } = req.params;
     await Flat.findByIdAndDelete(flatId);
-    res.status(200).send("User successfully deleted");
+    res.status(200).send("Flat successfully deleted");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

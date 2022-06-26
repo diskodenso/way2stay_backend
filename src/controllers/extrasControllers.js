@@ -10,7 +10,7 @@ export const createNewExtra = async (req, res) => {
         );
         res.status(201).json(newExtra);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -19,7 +19,7 @@ export const getAllExtras = async (req, res) => {
         const allExtras = await Extra.find();
         res.status(200).json({ extras: allExtras});
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -34,7 +34,7 @@ export const updateExtra = async (req, res) => {
         const resUpdatedExtra = await Extra.findByIdAndUpdate(extraId, updatedExtra, {new: true});
         res.status(200).json(resUpdatedExtra)
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -44,6 +44,6 @@ export const deleteExtra = async (req, res) => {
         await Extra.findByIdAndDelete(extraId);
         res.status(200).send("Extra successfully deleted")
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ error: error.message });
     }
 };

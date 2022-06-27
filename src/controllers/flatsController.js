@@ -14,27 +14,29 @@ export const getAllFlats = async (req, res) => {
     res.status(500).json(error);
   }
 };
-// --- GET ALL FLATS CONTROLLER --- //
+
+// --- GET ALL FLATS BY USERID CONTROLLER --- //
 export const getAllFlatsByUserId = async (req, res) => {
   try {
     const { userId } = req.body;
     const allFlatsByUserId = await Flat.find({ userId: userId });
-    res.status(200).json(allFlatsByUserId);
+    res.status(200).json({ flats: allFlatsByUserId });
   } catch (error) {
     res.status(500).json({ erorr: error.message });
   }
 };
 
-// --- GET SINGLE FLAT CONTROLLER --- //
+// --- GET SINGLE FLAT BY FLATID CONTROLLER --- //
 export const getSingleFlat = async (req, res) => {
   try {
     const { flatId } = req.params;
     const singleFlat = await Flat.findById(flatId);
-    res.status(200).json(singleFlat);
+    res.status(200).json({flat: singleFlat});
   } catch (error) {
     res.status(500).json({ erorr: error.message });
   }
 };
+
 // --- CREATE NEW FLAT CONTROLLER --- //
 export const createFlat = async (req, res) => {
   try {
@@ -63,7 +65,7 @@ export const createFlat = async (req, res) => {
     } = req.body;
     console.log(req.body);
     const flatDetails = {
-      userId: mongoose.Types.ObjectId(userId),
+      userId,
       isActive,
       title,
       description,
@@ -93,14 +95,18 @@ export const createFlat = async (req, res) => {
         imageurl,
       },
     };
-    const createdFlat = await Flat.create(flatDetails);
-    res.status(201).json(createdFlat);
+    if (userId) {
+      const createdFlat = await Flat.create(flatDetails);
+      res.status(201).json({ flat: createdFlat });
+    } else {
+      res.status(404).send("Please create an account before a flat");
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// --- UPDATE FLAT CONTROLLER --- //
+// --- UPDATE FLAT BY FLATID CONTROLLER --- //
 export const updateSingleFlat = async (req, res) => {
   try {
     const { flatId } = req.params;
@@ -151,11 +157,12 @@ export const updateSingleFlat = async (req, res) => {
         new: true,
       }
     );
-    res.status(200).json(updateSingleFlat);
+    res.status(200).json(updatedSingleFlat);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 // --- DELETE SINGLE FLAT CONTROLLER --- //
 export const deleteSingleFlat = async (req, res) => {
   try {

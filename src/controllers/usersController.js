@@ -46,6 +46,8 @@ export const createUser = async (req, res) => {
       process.env.JWT_SECRET // jwt secret
       // { expiresIn: "1h" } // options
     );
+    // 
+    res.cookie("token", token, { httpOnly: true });
     console.log(token);
     if (token && newUser) {
       res

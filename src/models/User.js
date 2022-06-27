@@ -55,13 +55,14 @@ const userSchema = new Schema({
       required: false,
     },
   },
-  // favorites: [
-  //   {
-  //     type: String,
-  //     required: false,
-  //     unique: true,
-  //   },
-  // ],
+  favorites: [
+    {
+      type: String,
+      default: [],
+      required: false,
+      unique: false,
+    },
+  ],
   // cloudiary just needs URL so thats enough
   profilePicUrl: {
     type: String,

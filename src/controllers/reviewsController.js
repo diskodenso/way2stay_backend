@@ -16,23 +16,28 @@ export const getAllReviews = async (req, res) => {
   }
 };
 
-// --- CREATE  REVIEWS BY FLAT ID, BOOKING ID AND USER IDbCONTROLLER --- //
+// --- CREATE REVIEW CONTROLLER --- //
 // flatid anhand der booking id
-// userid anhand der flatid
+// userid anhand der flatid - refactor - createReviewByBookingId
 export const createReview = async (req, res) => {
   try {
     const { userId, flatId, bookingId, score, text } = req.body;
+    console.log(req.body);
     const reviewDetails = {
-      userId: mongoose.Types.ObjectId(userId),
-      flatId: mongoose.Types.ObjectId(flatId),
-      bookingId: mongoose.Types.ObjectId(bookingId),
+      userId,
+      flatId,
+      bookingId,
       review: {
         score,
         text,
       },
     };
-    const createdReview = await Review.create(reviewDetails);
-    res.status(200).json(createdReview);
+    if (bookingId) {
+      const createdReview = await Review.create(reviewDetails);
+      res.status(200).json({ review: createdReview });
+    } else {
+      res.status(500).send("There is no booking to write an review on");
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -44,7 +49,7 @@ export const getAllReviewsByFlatId = async (req, res) => {
     const { flatId } = req.params;
     console.log(req.params);
     const allReviewsByFlatId = await Review.find({ flatId: flatId });
-    res.status(200).json(allReviewsByFlatId);
+    res.status(200).json({ reviews: allReviewsByFlatId });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -55,33 +60,34 @@ export const getAllReviewsByUserId = async (req, res) => {
   try {
     const { userId } = req.params;
     const allReviewsByUserId = await Review.find({ userId: userId });
-    res.status(200).json(allReviewsByUserId);
+    res.status(200).json({ reviews: allReviewsByUserId });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// --- GET ALL REVIEWS BY USER ID CONTROLLER --- //
+// --- GET ALL REVIEWS BY BOOKING ID CONTROLLER --- //
 export const getAllReviewsByBookingId = async (req, res) => {
   try {
     const { bookingId } = req.params;
     const allReviewsByBookingId = await Review.find({
       bookingId: bookingId,
     });
-    res.status(200).json(allReviewsByBookingId);
+    console.log(allReviewsByBookingId);
+    res.status(200).json({ reviews: allReviewsByBookingId });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// --- GET SINGLE REVIEW CONTROLLER --- //
+// --- GET SINGLE REVIEW BY REVIEWID CONTROLLER--- //
 export const getSingleReview = async (req, res) => {
   try {
-    const { reviewsId } = req.params;
-    console.log(reviewsId);
-    const singleReview = await Review.findById(reviewsId);
+    const { reviewId } = req.params;
+    console.log(reviewId);
+    const singleReview = await Review.findById(reviewId);
     console.log(singleReview);
-    res.status(200).json(singleReview);
+    res.status(200).json({ review: singleReview });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -90,8 +96,8 @@ export const getSingleReview = async (req, res) => {
 // --- DELETE SINGLE REVIEW CONTROLLER --- //
 export const deleteReview = async (req, res) => {
   try {
-    const { revieswId } = req.params;
-    await Review.findByIdAndDelete(revieswId);
+    const { reviewId } = req.params;
+    await Review.findByIdAndDelete(reviewId);
     res.status(200).json("Review successfully deleted");
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -101,7 +107,7 @@ export const deleteReview = async (req, res) => {
 // --- UPDATE SINGLE REVIEW CONTROLLER --- //
 export const updateReview = async (req, res) => {
   try {
-    const { reviewsId } = req.params;
+    const { reviewId } = req.params;
     const { userId, flatId, bookingId, score, text } = req.body;
     const reviewDetails = {
       userId,
@@ -113,11 +119,11 @@ export const updateReview = async (req, res) => {
       },
     };
     const updatedReview = await Review.findByIdAndUpdate(
-      reviewsId,
+      reviewId,
       reviewDetails,
       { new: true }
     );
-    res.status(200).json(updatedReview);
+    res.status(200).json({ review: updatedReview });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -1,10 +1,10 @@
 // import mongoose
 import mongoose from "mongoose";
 // deconstruct Schema and Model
-const { Schema, model, ObjectId } = mongoose;
+const { Schema, model } = mongoose;
 
 const timeSheetSchema = new Schema({
-  flatId: { type: ObjectId, ref: "Flat", required: [true, "Flat is required"] },
+  flatId: { type: String, ref: "Flat", required: [true, "Flat is required"] },
   start: { type: Date, required: true },
   end: { type: Date, required: true },
   available: { type: Boolean, required: true },

@@ -10,10 +10,10 @@ export const verifyToken = async (req, res, next) => {
       res.status(401).json("You are not authorized");
     } else {
       // use jwt verify method to check if verified
-      const isEmailBelongsToToken = jwt.verify(token, process.env.JWT_SECRET);
-      if (isEmailBelongsToToken) {
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      if (decodedToken) {
         // we need to create a new property
-        req.user = isEmailBelongsToToken;
+        req.body.user = decodedToken;
         res.status(200).json("token is valid wuhu");
         next();
       }

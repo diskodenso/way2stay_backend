@@ -12,7 +12,7 @@ import { verifyToken } from "../middlewares/verifyToken.js";
 const flatsRouter = Router();
 
 // get all Flats Router
-flatsRouter.route("/").get(getAllFlats).all();
+flatsRouter.route("/").get(getAllFlats).post(createFlat).all();
 // verification
 flatsRouter.route("/verify").get(verifyToken, verifySession);
 
@@ -26,9 +26,8 @@ flatsRouter
 
 // get all flats by User Id
 flatsRouter
-  .route("users/:userId")
+  .route("/users/:userId")
   .get(getAllFlatsByUserId)
-  .post(createFlat)
   .all();
 
 export default flatsRouter;

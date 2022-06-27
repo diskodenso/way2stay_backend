@@ -29,11 +29,11 @@ reviewsRouter.route("/flats/:flatId").get(getAllReviewsByFlatId);
 reviewsRouter.route("/users/:userId").get(getAllReviewsByUserId);
 
 // get All Reviews By bookingId
-reviewsRouter.route("/booking/:bookingId").get(getAllReviewsByBookingId);
+reviewsRouter.route("/bookings/:bookingId").get(getAllReviewsByBookingId);
 
 // get single reviews, delete and update single reviews Route
 reviewsRouter
-  .route("/:reviewsId")
+  .route("/:reviewId")
   .get(getSingleReview)
   .delete(deleteReview)
   .put(updateReview);

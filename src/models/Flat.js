@@ -2,10 +2,10 @@
 import mongoose from "mongoose";
 import User from "./User.js";
 // deconstruct Schema and Model
-const { Schema, model, ObjectId } = mongoose;
+const { Schema, model } = mongoose;
 
 const flatSchema = new Schema({
-  userId: { type: Schema.Types.ObjectId, ref: "User" },
+  userId: { type: String, ref: "User", required: true },
   // userId: { type: ObjectId },
   title: { type: String, required: true },
   description: { type: String, required: true },
@@ -26,7 +26,7 @@ const flatSchema = new Schema({
     kids: { type: Boolean, required: false, default: false },
     categories: [
       {
-        type: ObjectId,
+        type: String,
         ref: "Category",
         required: [false, "Category is not required"],
       },

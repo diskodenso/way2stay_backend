@@ -1,8 +1,8 @@
 // import jwt
 import jwt from "jsonwebtoken";
-// create verify token variable
 
-export const verifyToken = async (req, res, next) => {
+// declare variable
+export const signToken = async (req, res, next) => {
   try {
     const { token } = req.headers;
     console.log(req.headers);

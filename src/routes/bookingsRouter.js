@@ -9,14 +9,19 @@ import {
   updateBooking,
 } from "../controllers/bookingControllers.js";
 
+// declare bookings Router
 const bookingsRouter = Router();
 
+// get all bookings - see all bookings, create new booking
 bookingsRouter.route("/").get(getAllBookings).post(createNewBooking).all();
 
+// get all bookings by userId - see all bookings of specific user by userId
 bookingsRouter.route("/user/:userId").get(getAllBookingsByUserId).all();
 
+// get all bookings by flatId - see all bookings of specific flat by flatId
 bookingsRouter.route("/flat/:flatId").get(getAllBookingsByFlatId).all();
 
+// get single booking - see single booking by bookingId, update & delete single booking
 bookingsRouter
   .route("/:bookingId")
   .get(getSingleBookingById)

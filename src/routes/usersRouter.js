@@ -4,6 +4,7 @@ import { Router } from "express";
 import {
   createUser,
   deleteUser,
+  favorites,
   getAllUsers,
   getSingleUser,
   logIn,
@@ -34,6 +35,8 @@ usersRouter
   .put(updateUser)
   .delete(deleteUser)
   .all();
+
+usersRouter.route("/:userId/fav").put(favorites);
 
 // export Router
 export default usersRouter;

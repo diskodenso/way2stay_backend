@@ -7,14 +7,13 @@ import {
   updateSingleFlat,
   getAllFlatsByUserId,
 } from "../controllers/flatsController.js";
-import { verifySession } from "../controllers/usersController.js";
-import { verifyToken } from "../middlewares/verifyToken.js";
+
+// declare router
 const flatsRouter = Router();
 
 // get all Flats Router
 flatsRouter.route("/").get(getAllFlats).post(createFlat).all();
 // verification
-flatsRouter.route("/verify").get(verifyToken, verifySession);
 
 // get single flat router
 flatsRouter
@@ -25,9 +24,7 @@ flatsRouter
   .all();
 
 // get all flats by User Id
-flatsRouter
-  .route("/users/:userId")
-  .get(getAllFlatsByUserId)
-  .all();
+flatsRouter.route("/users/:userId").get(getAllFlatsByUserId).all();
 
+// export router
 export default flatsRouter;

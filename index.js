@@ -2,6 +2,8 @@ import "dotenv/config";
 import "./src/db/mongooseClient.js";
 import express from "express";
 import cors from "cors";
+import { fileURLToPath } from "url";
+import path from "path";
 import usersRouter from "./src/routes/usersRouter.js";
 import extrasRouter from "./src/routes/extrasRouter.js";
 import commentsRouter from "./src/routes/commentsRouter.js";
@@ -10,6 +12,8 @@ import flatsRouter from "./src/routes/flatsRouter.js";
 import timeSheetsRouter from "./src/routes/timeSheetsRouter.js";
 import categoriesRouter from "./src/routes/categoriesRouter.js";
 import reviewsRouter from "./src/routes/reviewsRouter.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
@@ -24,6 +28,7 @@ app.use(cors(corsOptions));
 
 // import ejs
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "src/views"));
 app.use(express.json());
 
 // app.use('/api/')

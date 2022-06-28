@@ -70,7 +70,7 @@ const userSchema = new Schema({
   },
   isActive: {
     type: Boolean,
-    defaut: true,
+    default: true,
   },
   createdAt: {
     type: Date,

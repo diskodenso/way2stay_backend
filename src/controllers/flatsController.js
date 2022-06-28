@@ -3,7 +3,6 @@ import Flat from "../models/Flat.js";
 import mongoose from "mongoose";
 // import object ID from mongoose
 import pkg from "mongoose";
-const { ObjectId } = pkg;
 
 // --- GET ALL FLAT CONTROLLER --- //
 export const getAllFlats = async (req, res) => {
@@ -31,7 +30,7 @@ export const getSingleFlat = async (req, res) => {
   try {
     const { flatId } = req.params;
     const singleFlat = await Flat.findById(flatId);
-    res.status(200).json({flat: singleFlat});
+    res.status(200).json({ flat: singleFlat });
   } catch (error) {
     res.status(500).json({ erorr: error.message });
   }
@@ -53,17 +52,16 @@ export const createFlat = async (req, res) => {
       extras,
       pets,
       kids,
+      categories,
       street,
       housenumber,
       postalcode,
       city,
       lat,
       lang,
-      imagetitle,
-      imagedescription,
-      imageurl,
+      images,
     } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     const flatDetails = {
       userId,
       isActive,
@@ -78,6 +76,7 @@ export const createFlat = async (req, res) => {
         extras,
         pets,
         kids,
+        categories,
       },
       location: {
         street,
@@ -89,11 +88,7 @@ export const createFlat = async (req, res) => {
         lat,
         lang,
       },
-      image: {
-        imagetitle,
-        imagedescription,
-        imageurl,
-      },
+      images,
     };
     if (userId) {
       const createdFlat = await Flat.create(flatDetails);
@@ -111,6 +106,7 @@ export const updateSingleFlat = async (req, res) => {
   try {
     const { flatId } = req.params;
     const {
+      isActive,
       title,
       description,
       maxPersons,
@@ -118,38 +114,46 @@ export const updateSingleFlat = async (req, res) => {
       bedroom,
       bathroom,
       floor,
-      extrasId,
+      extras,
       pets,
       kids,
+      categories,
       street,
       housenumber,
       postalcode,
       city,
       lat,
       lang,
-      imagetitle,
-      imagedescription,
+      images,
     } = req.body;
     const updatedFlat = {
+      isActive,
       title,
       description,
-      maxPersons,
-      size,
-      bedroom,
-      bathroom,
-      floor,
-      extrasId,
-      pets,
-      kids,
-      street,
-      housenumber,
-      postalcode,
-      city,
-      lat,
-      lang,
-      imagetitle,
-      imagedescription,
+      details: {
+        maxPersons,
+        size,
+        bedroom,
+        bathroom,
+        floor,
+        extras,
+        pets,
+        kids,
+        categories,
+      },
+      location: {
+        street,
+        housenumber,
+        postalcode,
+        city,
+      },
+      coordinates: {
+        lat,
+        lang,
+      },
+      images,
     };
+    console.log(updatedFlat);
     const updatedSingleFlat = await Flat.findByIdAndUpdate(
       flatId,
       updatedFlat,

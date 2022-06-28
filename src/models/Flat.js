@@ -42,13 +42,7 @@ const flatSchema = new Schema({
     lat: { type: Number, required: false },
     lang: { type: Number, required: false },
   },
-  images: [
-    {
-      imagetitle: { type: String, required: false },
-      imagedescription: { type: Number, required: false },
-      imageurl: { type: String, required: false },
-    },
-  ],
+  images: { type: Array, default: null },
   isActive: { type: Boolean, required: false, default: true },
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },

@@ -80,7 +80,6 @@ export const updateUser = async (req, res) => {
   const { userId } = req.params;
   const {
     username,
-    password,
     firstname,
     lastname,
     birthdate,
@@ -95,7 +94,6 @@ export const updateUser = async (req, res) => {
   try {
     const updatedUser = {
       username,
-      password,
       contact: {
         phonenumber,
         email,
@@ -146,7 +144,7 @@ export const favorites = async (req, res) => {
 export const logIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email, password);
+    // console.log(email, password);
     // find user and check if registered - use findOne (mongo method) method and search by email and select the password to check
     const findUser = await User.findOne({ contact: { email } }).select(
       "+password"
@@ -168,7 +166,7 @@ export const logIn = async (req, res) => {
         .status(200)
         .set("authorization", token)
         .json({ userId: findUser._id, message: "User successfully logged in" });
-      console.log(res);
+      //console.log(res);
     } else {
       res.status(401).send("Please create an account to log in");
     }
@@ -179,7 +177,7 @@ export const logIn = async (req, res) => {
 // --- VERIFY SESSION CONTROLLER --- //
 export const verifySession = async (req, res) => {
   res.status(200).json({
-    userId: req.decodedToken.userid,
+    userId: req.decodedToken.userId,
     message: "Token successfully verified",
   });
 };

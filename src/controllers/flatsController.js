@@ -17,7 +17,7 @@ export const getAllFlats = async (req, res) => {
 // --- GET ALL FLATS BY USERID CONTROLLER --- //
 export const getAllFlatsByUserId = async (req, res) => {
   try {
-    const { userId } = req.body;
+    const { userId } = req.params;
     const allFlatsByUserId = await Flat.find({ userId: userId });
     res.status(200).json({ flats: allFlatsByUserId });
   } catch (error) {

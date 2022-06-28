@@ -179,7 +179,7 @@ export const logIn = async (req, res) => {
 // --- VERIFY SESSION CONTROLLER --- //
 export const verifySession = async (req, res) => {
   res.status(200).json({
-    userId: req.decodedToken.userId,
+    userId: req.decodedToken.userid,
     message: "Token successfully verified",
   });
 };

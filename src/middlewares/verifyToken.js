@@ -10,11 +10,11 @@ export const verifyToken = async (req, res, next) => {
       res.status(401).json("Unauthorized"); //Nicht zu viele Infos über den Grund geben
     } else {
       //.verify() returnt den payload, der zum Erstellen des tokens benutzt wurde (email in unserem Fall)
-      const emailBelongingToToken = jwt.verify(token, process.env.JWT_SECRET);
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
       //console.log(emailBelongingToToken);
-      if (emailBelongingToToken) {
-        req.user = emailBelongingToToken;
-        console.log(emailBelongingToToken);
+      if (decodedToken) {
+        req.decodedToken = decodedToken;
+        console.log(decodedToken);
         next();
       }
     }

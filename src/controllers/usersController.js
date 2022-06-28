@@ -1,10 +1,10 @@
 // import User Model
 import User from "../models/User.js";
 // import bcrypt to encrypt password
+import bcrypt from "bcrypt";
 // import jwt
 import jwt from "jsonwebtoken";
 
-import bcrypt from "bcrypt";
 // each controller needs to be exported seperately
 
 // --- ALL USERS CONTROLLER --- //
@@ -180,5 +180,5 @@ export const logIn = async (req, res) => {
 };
 // --- VERIFY SESSION CONTROLLER --- //
 export const verifySession = async (req, res) => {
-  res.status(200).send("Token successfully verified");
+  res.status(200).json({ userId: req.decodedToken.userId, message: "Token successfully verified"});
 };

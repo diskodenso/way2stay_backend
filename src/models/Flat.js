@@ -15,22 +15,19 @@ const flatSchema = new Schema({
     bedroom: { type: Number, required: false },
     bathroom: { type: Number, required: false },
     floor: { type: Number, required: false },
-    extras: [
-      {
-        type: String,
-        ref: "Extra",
-        required: false,
-      },
-    ],
+    extras: {
+      type: Array,
+      ref: "Extra",
+      required: false,
+    },
+
     pets: { type: Boolean, required: false, default: false },
     kids: { type: Boolean, required: false, default: false },
-    categories: [
-      {
-        type: String,
-        ref: "Category",
-        required: [false, "Category is not required"],
-      },
-    ],
+    categories: {
+      type: Array,
+      ref: "Category",
+      required: [false, "Category is not required"],
+    },
   },
   location: {
     street: { type: String, required: false },

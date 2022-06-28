@@ -46,13 +46,11 @@ export const createUser = async (req, res) => {
       {
         email: newUser.contact.email,
         username: newUser.username,
-        userid: newUser._id,
+        userId: newUser._id,
       }, // payload
       process.env.JWT_SECRET // jwt secret
       // { expiresIn: "1h" } // options
     );
-    // cast to cookie
-    res.cookie("token", token, { httpOnly: true });
     console.log(token);
     if (token && newUser) {
       res
@@ -90,8 +88,8 @@ export const updateUser = async (req, res) => {
     housenumber,
     postalcode,
     phonenumber,
+    city,
     email,
-    favorites,
     isActive,
   } = req.body;
   try {
@@ -109,8 +107,8 @@ export const updateUser = async (req, res) => {
         street,
         housenumber,
         postalcode,
+        city,
       },
-      favorites,
       isActive,
     };
     const resUpdatedUser = await User.findByIdAndUpdate(userId, updatedUser, {
@@ -180,5 +178,8 @@ export const logIn = async (req, res) => {
 };
 // --- VERIFY SESSION CONTROLLER --- //
 export const verifySession = async (req, res) => {
-  res.status(200).json({ userId: req.decodedToken.userId, message: "Token successfully verified"});
+  res.status(200).json({
+    userId: req.decodedToken.userId,
+    message: "Token successfully verified",
+  });
 };

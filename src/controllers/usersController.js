@@ -87,8 +87,9 @@ export const updateUser = async (req, res) => {
     housenumber,
     postalcode,
     phonenumber,
-    city,
     email,
+    city,
+    profilePicUrl,
     isActive,
   } = req.body;
   try {
@@ -107,6 +108,7 @@ export const updateUser = async (req, res) => {
         postalcode,
         city,
       },
+      profilePicUrl,
       isActive,
     };
     const resUpdatedUser = await User.findByIdAndUpdate(userId, updatedUser, {

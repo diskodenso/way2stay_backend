@@ -37,7 +37,7 @@ app.use("/api/categories", categoriesRouter);
 app.use("/api/reviews", reviewsRouter);
 
 // Api Description
-app.get("/", (req, res) => res.render("pages/index"));
+app.get("/", (req, res) => res.render("pages/index.ejs"));
 
 app.listen(port, () => {
   console.log(`The server is listening on port ${port}`);

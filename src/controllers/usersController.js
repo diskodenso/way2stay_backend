@@ -157,8 +157,8 @@ export const logIn = async (req, res) => {
     if (isPasswordCorrect) {
       const token = jwt.sign(
         {
-          email: findUser.email,
-          userId: findUser.userId,
+          email: findUser.contact.email,
+          userId: findUser._id,
           username: findUser.username,
         },
         process.env.JWT_SECRET

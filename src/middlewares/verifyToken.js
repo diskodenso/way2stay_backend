@@ -6,7 +6,7 @@ export const verifyToken = async (req, res, next) => {
   try {
     const { token } = req.headers;
     console.log(req.headers);
-    if (!token) {
+    if (!token || token === undefined) {
       res.status(401).json("Unauthorized"); //Nicht zu viele Infos über den Grund geben
     } else {
       //.verify() returnt den payload, der zum Erstellen des tokens benutzt wurde (email in unserem Fall)

@@ -17,7 +17,7 @@ import { verifyToken } from "../middlewares/verifyToken.js";
 const usersRouter = Router();
 
 // create a get route to see All Users and a post route to create a new User
-usersRouter.route("/").get(getAllUsers).all();
+usersRouter.route("/").get(verifyToken, getAllUsers).all();
 
 // signUp Route - post request
 usersRouter.route("/signup").post(createUser); // change to "/".post

@@ -40,53 +40,19 @@ export const getSingleFlat = async (req, res) => {
 export const createFlat = async (req, res) => {
   try {
     const {
-      isActive,
-      userId,
-      title,
-      description,
-      maxPersons,
-      size,
-      bedroom,
-      bathroom,
-      floor,
-      extras,
-      pets,
-      kids,
-      categories,
-      street,
-      housenumber,
-      postalcode,
-      city,
-      lat,
-      lang,
-      images,
+      isActive, userId, title, description, maxPersons, size, bedroom, bathroom, floor, extras, pets, kids,
+      categories, street, housenumber, postalcode, city, lat, lang, images,
     } = req.body;
     // console.log(req.body);
     const flatDetails = {
-      userId,
-      isActive,
-      title,
-      description,
-      details: {
-        maxPersons,
-        size,
-        bedroom,
-        bathroom,
-        floor,
-        extras,
-        pets,
-        kids,
-        categories,
+      userId, isActive, title, description, details: {
+        maxPersons, size, bedroom, bathroom, floor, extras, pets, kids, categories,
       },
       location: {
-        street,
-        housenumber,
-        postalcode,
-        city,
+        street, housenumber, postalcode, city,
       },
       coordinates: {
-        lat,
-        lang,
+        lat, lang,
       },
       images,
     };
@@ -106,50 +72,18 @@ export const updateSingleFlat = async (req, res) => {
   try {
     const { flatId } = req.params;
     const {
-      isActive,
-      title,
-      description,
-      maxPersons,
-      size,
-      bedroom,
-      bathroom,
-      floor,
-      extras,
-      pets,
-      kids,
-      categories,
-      street,
-      housenumber,
-      postalcode,
-      city,
-      lat,
-      lang,
-      images,
+      isActive, title, description, maxPersons, size, bedroom, bathroom, floor, extras, pets,
+      kids, categories, street, housenumber, postalcode, city, lat, lang, images,
     } = req.body;
     const updatedFlat = {
-      isActive,
-      title,
-      description,
-      details: {
-        maxPersons,
-        size,
-        bedroom,
-        bathroom,
-        floor,
-        extras,
-        pets,
-        kids,
-        categories,
+      isActive, title, description, details: {
+        maxPersons, size, bedroom, bathroom, floor, extras, pets, kids, categories,
       },
       location: {
-        street,
-        housenumber,
-        postalcode,
-        city,
+        street, housenumber, postalcode, city,
       },
       coordinates: {
-        lat,
-        lang,
+        lat, lang,
       },
       images,
     };

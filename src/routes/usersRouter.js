@@ -2,14 +2,14 @@
 import { Router } from "express";
 // import controllers
 import {
-  createUser,
-  deleteUser,
-  favorites,
-  getAllUsers,
-  getSingleUser,
-  logIn,
-  updateUser,
-  verifySession,
+    createUser,
+    deleteUser,
+    favorites,
+    getAllUsers,
+    getSingleUser,
+    logIn,
+    updateUser,
+    verifySession,
 } from "../controllers/usersController.js";
 import { verifyToken } from "../middlewares/verifyToken.js";
 
@@ -30,13 +30,14 @@ usersRouter.route("/verify").get(verifyToken, verifySession);
 
 // create a get route to see Single User, update Single User and delete a single User
 usersRouter
-  .route("/:userId")
-  .get(getSingleUser)
-  .put(updateUser)
-  .delete(deleteUser)
-  .all();
+    .route("/:userId")
+    .get(getSingleUser)
+    .put(updateUser)
+    .delete(deleteUser)
+    .all();
 
-usersRouter.route("/:userId/fav").put(favorites);
+usersRouter.route("/:userId/fav/add").put(favorites);
+usersRouter.route("/:userId/fav/remove").put(favorites);
 
 // export Router
 export default usersRouter;

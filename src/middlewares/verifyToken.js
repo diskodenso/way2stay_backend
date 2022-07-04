@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 export const verifyToken = async (req, res, next) => {
   try {
     const { token } = req.headers;
-    console.log(req.headers);
     if (!token || token === undefined) {
       res.status(401).json("Unauthorized"); //Nicht zu viele Infos über den Grund geben
     } else {
@@ -14,7 +13,6 @@ export const verifyToken = async (req, res, next) => {
       //console.log(emailBelongingToToken);
       if (decodedToken) {
         req.decodedToken = decodedToken;
-        console.log(decodedToken);
         next();
       }
     }

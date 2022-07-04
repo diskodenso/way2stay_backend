@@ -152,6 +152,7 @@ export const logIn = async (req, res) => {
         const findUser = await User.findOne({ 'contact.email': email }).select(
             "+password"
         );
+        console.log(email);
         // check if password is correct with bcrypt compare method
         const isPasswordCorrect = await bcrypt.compare(password, findUser.password);
         if (isPasswordCorrect) {

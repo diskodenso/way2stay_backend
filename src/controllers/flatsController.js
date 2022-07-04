@@ -87,7 +87,7 @@ export const updateSingleFlat = async (req, res) => {
       },
       images,
     };
-    console.log(updatedFlat);
+    console.log(req.body);
     const updatedSingleFlat = await Flat.findByIdAndUpdate(
       flatId,
       updatedFlat,

@@ -34,6 +34,7 @@ const flatSchema = new Schema({
     housenumber: { type: String, required: false },
     postalcode: { type: Number, required: false },
     city: { type: String, required: false },
+    country: {type: String, required: false}
   },
   coordinates: {
     lat: { type: Number, required: false },

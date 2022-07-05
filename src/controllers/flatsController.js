@@ -71,14 +71,14 @@ export const updateSingleFlat = async (req, res) => {
     const { flatId } = req.params;
     const {
       isActive, title, description, maxPersons, size, bedroom, bathroom, floor, extras, pets,
-      kids, categories, street, housenumber, postalcode, city, lat, lang, images,
+      kids, categories, street, housenumber, postalcode, city, country, lat, lang, images,
     } = req.body;
     const updatedFlat = {
       isActive, title, description, details: {
         maxPersons, size, bedroom, bathroom, floor, extras, pets, kids, categories,
       },
       location: {
-        street, housenumber, postalcode, city,
+        street, housenumber, postalcode, city, country
       },
       coordinates: {
         lat, lang,

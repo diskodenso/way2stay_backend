@@ -39,10 +39,8 @@ export const getSingleFlat = async (req, res) => {
 // --- CREATE NEW FLAT CONTROLLER --- //
 export const createFlat = async (req, res) => {
   try {
-    const {
-      isActive, userId, title, description, maxPersons, size, bedroom, bathroom, floor, extras, pets, kids,
-      categories, street, housenumber, postalcode, city, lat, lang, images,
-    } = req.body;
+    const { isActive, userId, title, description, maxPersons, size, bedroom, bathroom, floor, extras, pets, kids,
+      categories, street, housenumber, postalcode, city, lat, lang, images } = req.body;
     // console.log(req.body);
     const flatDetails = {
       userId, isActive, title, description, details: {
@@ -60,7 +58,7 @@ export const createFlat = async (req, res) => {
       const createdFlat = await Flat.create(flatDetails);
       res.status(201).json({ flat: createdFlat });
     } else {
-      res.status(404).send("Please create an account before a flat");
+      res.status(401).send("Please create an account before a flat");
     }
   } catch (error) {
     res.status(500).json({ error: error.message });

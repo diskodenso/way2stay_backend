@@ -19,7 +19,6 @@
     <li>
       <a href="#built-with">Built With</a>
     </li>
-    <li><a href="#sitemap">Sitemap</a></li>
     <li><a href="#api-endpoints">API Endpoints</a></li>
     <ul type="1">
         <li><a href="#users">Users</a></li>

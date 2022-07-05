@@ -16,10 +16,10 @@ const bookingsRouter = Router();
 bookingsRouter.route("/").get(getAllBookings).post(createNewBooking).all();
 
 // get all bookings by userId - see all bookings of specific user by userId
-bookingsRouter.route("/user/:userId").get(getAllBookingsByUserId).all();
+bookingsRouter.route("/users/:userId").get(getAllBookingsByUserId).all();
 
 // get all bookings by flatId - see all bookings of specific flat by flatId
-bookingsRouter.route("/flat/:flatId").get(getAllBookingsByFlatId).all();
+bookingsRouter.route("/flats/:flatId").get(getAllBookingsByFlatId).all();
 
 // get single booking - see single booking by bookingId, update & delete single booking
 bookingsRouter

@@ -149,37 +149,6 @@ nodemon
 ---
 <br>
 
-<div href="#sitemap"></div>
-
-## Sitemap
-
-> #### Landingpage
-
-> - How to use
-
-> - Login
-
-> - Sign Up
->     - Profile
->         - edit Profile
-> 
->     - add Flat
->         - edit Flat
-
-> - List
->     - Item
-
-> - About/Contact
-
-<br>
-
-<p align="right">&uarr; <a href="#top">back to top</a> &uarr;</p>
-
----
-
----
-<br>
-
 <div href="#api-endpoints"></div>
 
 ## API Endpoints

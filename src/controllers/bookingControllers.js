@@ -19,18 +19,20 @@ export const createNewBooking = async (req, res) => {
   try {
     const { flatOneId, flatTwoId, arrival, departure, approved, comments } =
       req.body;
-    const newBooking = await Booking.create({
-      flatOneId,
-      flatTwoId,
-      arrival,
-      departure,
-      approved,
-      comments,
-      createdAt: new Date(),
-    });
+    const newBooking = await Booking.create(
+      {
+        flatOneId,
+        flatTwoId,
+        arrival,
+        departure,
+        approved,
+        comments
+      }
+    );
     res.status(201).json({ booking: newBooking });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Booking NOT successful' });
+    console.log(error);
   }
 };
 
@@ -49,8 +51,14 @@ export const getSingleBookingById = async (req, res) => {
 export const getAllBookingsByFlatId = async (req, res) => {
   const { flatId } = req.params;
   try {
-    const allBookingsByFlatId = await Booking.find({ flatId: flatId });
-    res.status(200).json({ bookings: allBookingsByFlatId });
+    const flatOneBookings = await Booking.find({ flatOneId: flatId });
+    const flatTwoBookings = await Booking.find({ flatTwoId: flatId });
+    res.status(200).json({
+      bookings: {
+        flatOne: flatOneBookings,
+        flatTwo: flatTwoBookings
+      }
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -60,8 +68,14 @@ export const getAllBookingsByFlatId = async (req, res) => {
 export const getAllBookingsByUserId = async (req, res) => {
   const { userId } = req.params;
   try {
-    const allBookingsByUserId = await Booking.find({ userId: userId });
-    res.status(200).json({ bookings: allBookingsByUserId });
+    const userOneBookings = await Booking.find({ userId: userId });
+    const userTwoBookings = await Booking.find({ userId: userId });
+    res.status(200).json({
+      bookings: {
+        userOne: userOneBookings,
+        userTwo: userTwoBookings
+      }
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -19,6 +19,7 @@ export const createNewBooking = async (req, res) => {
   try {
     const { flatOneId, flatTwoId, arrival, departure, approved, comments } =
       req.body;
+    console.log(req.body);
     const newBooking = await Booking.create(
       {
         flatOneId,
